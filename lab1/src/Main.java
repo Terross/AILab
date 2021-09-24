@@ -6,14 +6,16 @@ public class Main {
                 {7, 5, 8}
         };
 
-//        int state[][] = {
-//                {1, 2, 3},
-//                {4, 5, 0},
-//                {6, 7, 8}
-//        };
-
         SearchTree searchTree = new SearchTree(state);
 
-        searchTree.DFS();
+//        long startTime = System.currentTimeMillis();
+//        searchTree.DFS(Integer.MAX_VALUE);
+//        long endTime = System.currentTimeMillis();
+//        System.out.println(endTime - startTime);
+
+        long startTime = System.currentTimeMillis();
+        searchTree.IDS();
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
     }
 }

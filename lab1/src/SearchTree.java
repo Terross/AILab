@@ -98,7 +98,8 @@ public class SearchTree {
         return result;
     }
 
-    public boolean DFS() {
+
+    public boolean DFS(int deep) {
         makeQueue(initialNode);
         while (true) {
             if (nodeQueue.isEmpty()) {
@@ -109,13 +110,23 @@ public class SearchTree {
                 showSolution(node);
                 return true;
             } else {
-
-                if (checkCycle(node)) {
+                if (node.getDepth() < deep && checkCycle(node)) {
                     makeQueue(node);
                     checkedNodes.add(node);
                 }
             }
         }
+    }
+
+    public boolean IDS() {
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            nodeQueue = new ArrayDeque<>();
+            checkedNodes = new ArrayDeque<>();
+            if (DFS(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void showSolution(Node node) {
