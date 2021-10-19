@@ -7,8 +7,10 @@ public class SearchTree {
             {4, 0, 5},
             {6, 7, 8}
     };
+
     private Deque<Node> nodeQueue;
     private Deque<Node> checkedNodes;
+    private int maxQueueSize = 0;
 
     public SearchTree(int[][] state) {
         nodeQueue = new ArrayDeque<>();
@@ -102,6 +104,9 @@ public class SearchTree {
     public boolean DFS(int deep) {
         makeQueue(initialNode);
         while (true) {
+            if (maxQueueSize < nodeQueue.size()) {
+                maxQueueSize = nodeQueue.size();
+            }
             if (nodeQueue.isEmpty()) {
                 return false;
             }
@@ -119,7 +124,7 @@ public class SearchTree {
     }
 
     public boolean IDS() {
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+        for (int i = 0; i < 200; i++) {
             nodeQueue = new ArrayDeque<>();
             checkedNodes = new ArrayDeque<>();
             if (DFS(i)) {
@@ -169,6 +174,10 @@ public class SearchTree {
 
     public void setNodeQueue(Deque<Node> nodeQueue) {
         this.nodeQueue = nodeQueue;
+    }
+
+    public int getMaxQueueSize() {
+        return maxQueueSize;
     }
 
     @Override

@@ -9,6 +9,7 @@ public class ASearch {
     };
     private Queue<Node> nodeQueue;
     private Deque<Node> checkedNodes;
+    private int maxQueueSize = 0;
 
     public ASearch(int[][] state) {
         nodeQueue = new PriorityQueue<>(Comparator.comparingInt(Node::findMetric));
@@ -25,6 +26,7 @@ public class ASearch {
             }
         }
         this.initialNode = new Node(state, emptyI, emptyJ, null);
+
     }
 
     public void makeQueue(Node node) {
@@ -102,6 +104,9 @@ public class ASearch {
     public boolean aSearch() {
         makeQueue(initialNode);
         while(true) {
+            if (nodeQueue.size() > maxQueueSize) {
+                maxQueueSize = nodeQueue.size();
+            }
             if (nodeQueue.isEmpty()) {
                 return false;
             }
@@ -127,8 +132,10 @@ public class ASearch {
         System.out.println(showState(node));
     }
 
+
     public String showState(Node node) {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("   ^   \n").append("   |   \n");
         int[][] state = node.getState();
         for (int i = 0; i < 3; i++) {
             stringBuilder.append("[");
@@ -162,6 +169,10 @@ public class ASearch {
 
     public void setNodeQueue(Deque<Node> nodeQueue) {
         this.nodeQueue = nodeQueue;
+    }
+
+    public int getMaxQueueSize() {
+        return maxQueueSize;
     }
 
     @Override

@@ -8,14 +8,14 @@ public class Main {
 
         SearchTree searchTree = new SearchTree(state);
 
+        long startTime = System.currentTimeMillis();
+        searchTree.DFS(300);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time = " + (endTime - startTime));
+        System.out.println("Size = " + (searchTree.getMaxQueueSize()));
 //        long startTime = System.currentTimeMillis();
-//        searchTree.DFS(Integer.MAX_VALUE);
+//        searchTree.IDS();
 //        long endTime = System.currentTimeMillis();
 //        System.out.println(endTime - startTime);
-
-        long startTime = System.currentTimeMillis();
-        searchTree.IDS();
-        long endTime = System.currentTimeMillis();
-        System.out.println(endTime - startTime);
     }
 }

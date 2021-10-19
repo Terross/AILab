@@ -11,6 +11,7 @@ public class Main {
         long startTime = System.currentTimeMillis();
         aSearch.aSearch();
         long endTime = System.currentTimeMillis();
-        System.out.println(endTime - startTime);
+        System.out.println("Time = " +  (endTime - startTime) + " millis");
+        System.out.println("Capacitive complexity = " + aSearch.getMaxQueueSize());
     }
 }
