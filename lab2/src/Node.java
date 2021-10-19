@@ -46,8 +46,12 @@ public class Node {
         return result;
     }
 
-    public int findMetric() {
-        return findH1() + findH2();
+    public int findMetric(Type type) {
+        if (type == Type.H1) {
+            return findH1() + this.getDepth();
+        } else {
+            return findH2() + this.getDepth();
+        }
     }
 
     public int[][] getState() {

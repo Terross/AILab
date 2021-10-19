@@ -11,8 +11,10 @@ public class ASearch {
     private Deque<Node> checkedNodes;
     private int maxQueueSize = 0;
 
-    public ASearch(int[][] state) {
-        nodeQueue = new PriorityQueue<>(Comparator.comparingInt(Node::findMetric));
+    public ASearch(int[][] state, Type type) {
+
+        nodeQueue = new PriorityQueue<>(Comparator.comparingInt(n -> n.findMetric(type)));
+
         checkedNodes = new ArrayDeque<>();
 
         int emptyI = 0;
